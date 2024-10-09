@@ -1,7 +1,7 @@
 defmodule LoggerPSQL.MixProject do
   use Mix.Project
 
-  @version "0.1.2"
+  @version "0.1.3"
 
   def project do
     [
@@ -31,7 +31,7 @@ defmodule LoggerPSQL.MixProject do
     [
       {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},
-      {:logger_json, "~> 5.1"},
+      {:logger_json, "~> 6.1"},
       {:ex_doc, "~> 0.27", only: :dev, runtime: false},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       {:faker, "~> 0.17", only: :test}
