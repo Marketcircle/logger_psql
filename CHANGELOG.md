@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.1.3] - 2024-10-09
+
+### Added
+  - Added multi-tenancy attributes & indexes.
+
 ## [0.1.2] - 2023-07-25
 
 Fixing message field.

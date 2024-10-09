@@ -3,11 +3,11 @@ defmodule <%= module_prefix %>.Repo.Migrations.CreateLogTable do
 
   def change do
     <%= unless is_nil(db_prefix) or db_prefix == "" do %>
-    execute("CREATE SCHEMA <%= db_prefix %>", "DROP SCHEMA <%= db_prefix %> CASCADE")
+    execute("CREATE SCHEMA IF NOT EXISTS <%= db_prefix %>")
     <% end %>
-
     create table(<%= inspect(schema_name) %>, primary_key: false<%= unless is_nil(db_prefix) or db_prefix == "", do: ", prefix: \"#{db_prefix}\"" %>) do
       add :id, :binary_id, primary_key: true
+      add :customer_id, :integer
       add :level, :string
       add :application, :string
       add :domain, :string
@@ -17,11 +17,26 @@ defmodule <%= module_prefix %>.Repo.Migrations.CreateLogTable do
       add :module, :string
       add :pid, :string
       add :time, :utc_datetime
+      add :user_email, :string
+      add :user_id, :integer
+      add :device_id, :string
+      add :device_name, :string
+      add :marketing_version, :string
+      add :build_number, :string
+      add :system_version, :string
+
       add :message, :text
       add :metadata, :map
       add :request_id, :string
 
       timestamps()
     end
+
+    create index(<%= inspect(schema_name) %>, [:customer_id]<%= unless is_nil(db_prefix) or db_prefix == "", do: ", prefix: \"#{db_prefix}\"" %>)
+    create index(<%= inspect(schema_name) %>, [:user_email]<%= unless is_nil(db_prefix) or db_prefix == "", do: ", prefix: \"#{db_prefix}\"" %>)
+    create index(<%= inspect(schema_name) %>, [:device_id]<%= unless is_nil(db_prefix) or db_prefix == "", do: ", prefix: \"#{db_prefix}\"" %>)
+    create index(<%= inspect(schema_name) %>, [:level]<%= unless is_nil(db_prefix) or db_prefix == "", do: ", prefix: \"#{db_prefix}\"" %>)
+    create index(<%= inspect(schema_name) %>, [:inserted_at]<%= unless is_nil(db_prefix) or db_prefix == "", do: ", prefix: \"#{db_prefix}\"" %>)
+
   end
 end

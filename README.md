@@ -4,6 +4,8 @@
 
 LoggerPSQL is a Logger backend that emits the logs to a PostgreSQL Repo.
 
+** Added some customizations that's pretty unique to us. It would be nice if we could generalize and publish... **
+
 ## Installation
 
 Add `logger_psql` to your list of dependencies in `mix.exs`:
@@ -11,7 +13,7 @@ Add `logger_psql` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:logger_psql, "~> 0.1.2"}
+    {:logger_psql, "~> 0.1.3"}
   ]
 end
 ```
